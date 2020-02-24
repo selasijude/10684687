@@ -1,1 +1,60 @@
 
+// 10684687
+// Linesr search assignment
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    //Declaring variables
+    int Mine[20],i,n,key,position,l;
+    //The following line of codes accepts the elements in the array
+
+    cout<<"Enter the size of your desired aerray"<<endl;
+    cin>>n;
+    cout<<"Enter all elements of the array"<<endl;
+    for(i=0;i<n;i++)
+    {
+        cin>>Mine[i];
+    }
+    //This displays the elements a user enters
+    cout<<"These are the numbers you entered"<<endl;
+    for(i=0;i<n;i++)
+    {
+        cout<<Mine[i]<<",";
+    }
+    cout<<endl;
+    cout<<endl;
+
+    // Accepts the key element the user wants to search
+    cout<<"Enter the desired number to be searched"<<endl;
+    cin>>key;
+    cout<<endl;
+
+    // Recursively searches the array for that particular number
+    for(i=0; i<n; i++)
+	{
+		if(Mine[i]==key)
+		{
+			l=1;
+			position=i+1;
+			break;
+		}
+	}
+
+	//Displays location of the element searched in the array if found
+	if(l==0)
+	{
+		cout<<key<<" is not in the array"<<endl;;
+	}
+	else
+	{
+		cout<<"The number "<<key<<" was found at position "<<position;
+	}
+
+
+
+
+    return 0;
+}
