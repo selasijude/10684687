@@ -1,0 +1,82 @@
+#include <iostream>
+#include <climits>
+
+using namespace std;
+
+void MaxMin(int Mine[],int small, int big,int& minimum,int& maximum)
+{
+    if(small==big) //Thus array comprising of only one element
+    {
+        if (maximum< Mine[small])
+            maximum=Mine[small];
+
+        if (minimum> Mine[big])
+            minimum=Mine[big];
+
+    return;
+    }
+    if(big-small==1) //Thus array comprising of only one element
+    {
+        if (Mine[small]<Mine[big])
+        {
+            if (minimum> Mine[small])
+                minimum=Mine[small];
+
+            if (maximum< Mine[big])
+                maximum = Mine[big];
+
+        }
+        else
+
+        {
+            if (minimum > Mine[big])
+                minimum=Mine[big];
+            if (maximum< Mine[small])
+                maximum = Mine[small];
+
+        }
+
+    return;
+    }
+    int middle= (small+big)/2;
+
+    MaxMin(Mine, small, middle, minimum, maximum);
+
+    MaxMin(Mine, middle+1,big, minimum, maximum);
+
+
+}
+
+int main()
+{
+    //Declaring variables
+    int Mine[20],i,n;
+    //The following line of codes accepts the elements in the array
+
+    cout<<"Enter the size of your desired aerray"<<endl;
+    cin>>n;
+    cout<<"Enter all elements of the array"<<endl;
+    for(i=0;i<n;i++)
+    {
+        cin>>Mine[i];
+    }
+    //This displays the elements a user enters
+    cout<<"These are the numbers you entered"<<endl;
+    for(i=0;i<n;i++)
+    {
+        cout<<Mine[i]<<",";
+    }
+    cout<<endl;
+    cout<<endl;
+    int l= sizeof(Mine)/ sizeof(Mine[0]);
+
+    //Calling the MaxMin function
+    int maximum = INT_MIN, minimum =  INT_MAX;
+
+    MaxMin(Mine,0,l-1,minimum, maximum);
+    cout<<minimum<<" is the smallest value in the array"<<endl;
+    cout<<maximum<<" is the largest value in the array"<<endl;
+
+
+    return 0;
+}
